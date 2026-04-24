@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jobPortalDesc.entity.Application;
 import com.jobPortalDesc.entity.Job;
@@ -26,12 +27,13 @@ public class ApplicationService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Transactional
 	public String applyJob(Long jobId, String email) {
 		User user = userRepository.findByEmail(email)
 				.orElseThrow(() -> new ResourceNotFoundException("User Not Found"));
 		
 		Job job = jobRepository.findById(jobId)
-				.orElseThrow(() -> new ResourceNotFoundException("User Not Found"));
+				.orElseThrow(() -> new ResourceNotFoundException("Id Not Found"));
 		
 		Application application = new Application();
 		application.setApplicant(user);

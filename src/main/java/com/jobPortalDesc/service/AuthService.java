@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jobPortalDesc.dto.request.LoginRequest;
 import com.jobPortalDesc.dto.request.RegisterRequest;
@@ -18,6 +19,7 @@ public class AuthService {
 	@Autowired
 	UserRepository userRepository;
 	
+	@Transactional
 	public String register(RegisterRequest request) {
 		
 		User user = new User();
