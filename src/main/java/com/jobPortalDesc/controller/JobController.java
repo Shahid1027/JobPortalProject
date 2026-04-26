@@ -40,9 +40,41 @@ public class JobController {
 		return ResponseEntity.ok(jobs);
 	}
 	
-	@GetMapping("serach/title")
+	@GetMapping("search/title")
 	public ResponseEntity<List<Job>> searchByTitile(@RequestParam String title){
 		List<Job> jobs = jobService.searchByTitle(title);
 		return ResponseEntity.ok(jobs);
 	}
 }
+
+
+
+
+//**GET requests:**
+//
+//**1. Saari jobs dekho:**
+//```
+//GET http://localhost:8081/jobs/all
+//Authorization: Bearer <token>
+//```
+//
+//**2. Location se search:**
+//```
+//GET http://localhost:8081/jobs/search/location?location=Bangalore
+//Authorization: Bearer <token>
+//```
+//
+//**3. Title se search:**
+//```
+//GET http://localhost:8081/jobs/search/title?keyword=Java
+//Authorization: Bearer <token>
+//```
+//
+//**4. Meri applications dekho:**
+//```
+//GET http://localhost:8081/applications/my?email=rukhsar@abc.com
+//Authorization: Bearer <token>
+//```
+//
+//
+///

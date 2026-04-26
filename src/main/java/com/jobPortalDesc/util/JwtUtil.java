@@ -13,16 +13,7 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class JwtUtil {
 
-//	@Value("${jwt.secret}")
-//	private String secret;
-//	
-//	@Value("${jwt.expiration}")
-//	private Long expiration;
-//	
-//	private SecretKey getSigningKey() {
-//		byte[] keyBytes = Decoders.BASE64.decode(secret);
-//		return Keys.hmacShaKeyFor(keyBytes);
-//	}
+
 	 private static final String SECRET_KEY = "your-secure-secret-key-min-32bytes";
 	    private static final SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
 

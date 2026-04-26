@@ -65,7 +65,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 		
-		if(!request.getServletPath().equals("/generate-token")) {
+		if(!request.getServletPath().equals("/auth/login")) {
 			filterChain.doFilter(request, response);
 			return ;
 		}
@@ -79,7 +79,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 		
 		if(authResult.isAuthenticated()) {
 			String token = jwtUtil.generateToken(authResult.getName(), 15L);
-			response.setHeader("Autherization", "Bearer" + token );
+			response.setHeader("Authorization", "Bearer" + token );
 			
 
             String refreshToken = jwtUtil.generateToken(authResult.getName(), 7 * 24 * 60L); //7day
